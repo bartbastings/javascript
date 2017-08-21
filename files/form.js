@@ -1,3 +1,5 @@
+var forms,
+    inputs;
 /* BEGIN - create HTML elements */
 /* create error message function */
 function createErrorMessage(message) {
@@ -122,3 +124,24 @@ var textFieldOnChange = function (event) {
 		}
 	}
 };
+
+// document load
+document.addEventListener("DOMContentLoaded", function () {
+	"use strict";
+	// set form var
+	forms = document.querySelectorAll("form");
+	inputs = document.getElementsByClassName("js-input");
+	//set element event listener
+	if (forms.length > 0) {
+		Array.prototype.forEach.call(forms, function (form) {
+			replaceValidationUI(form);
+		});
+	}
+	if (inputs.length > 0) {
+		Array.prototype.forEach.call(inputs, function (input) {
+			input.addEventListener("focus", textFieldFocus);
+			input.addEventListener("blur", textFieldBlur);
+			input.addEventListener("change", textFieldOnChange);
+		});
+	}
+});
