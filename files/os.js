@@ -235,3 +235,9 @@ var setOs = function () {
 		}
 	});
 };
+
+// document load
+document.addEventListener("DOMContentLoaded", function () {
+	"use strict";
+	setOs();
+});
